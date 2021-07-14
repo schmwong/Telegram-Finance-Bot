@@ -17,17 +17,18 @@ def get_px_change(
     update: Update,
     context: CallbackContext,
     ticker: str = None,
-) -> None:
+) -> None: FB
 
-    # assumes command is passed via `/get_px_change AMZN` and only
-    # a single ticker is accepted
-    ticker = update.message.text.split("/get_px_change")[1].strip()
 
-    # use our script to obtain price change
-    pct_chng, _ = get_price_change(ticker)
-    message = f"{ticker.upper()} changed by {pct_chng}!"
+# assumes command is passed via `/get_px_change AMZN` and only
+# a single ticker is accepted
+ticker = update.message.text.split("/get_px_change")[1].strip()
 
-    update.message.reply_text(message)
+# use our script to obtain price change
+pct_chng, _ = get_price_change(ticker)
+message = f"{ticker.upper()} changed by {pct_chng}!"
+
+update.message.reply_text(message)
 
 
 def main() -> None:
