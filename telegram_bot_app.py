@@ -1,5 +1,4 @@
-import os
-
+from ticker import get_price_change
 from telegram.ext import (
     Updater,
     CommandHandler,
@@ -7,8 +6,9 @@ from telegram.ext import (
     ConversationHandler,
     Filters
 )
+import os
+PORT = int(os.environ.get("PORT", 5000))
 
-from ticker import get_price_change
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
@@ -17,11 +17,11 @@ def get_px_change(
     update: Update,
     context: CallbackContext,
     ticker: str = None,
-) -> None: FB
+) -> None:
 
 
-# assumes command is passed via `/get_px_change AMZN` and only
-# a single ticker is accepted
+    # assumes command is passed via `/get_px_change AMZN` and only
+    # a single ticker is accepted
 ticker = update.message.text.split("/get_px_change")[1].strip()
 
 # use our script to obtain price change
@@ -41,8 +41,15 @@ def main() -> None:
     dispatcher.add_handler(CommandHandler("get_px_change", get_px_change))
 
     # Start the Bot
-    updater.start_polling()
-
+    # `start_polling` for local dev; webhook for production
+    # updater.start_polling()
+    updater.start_webhook(
+        listen="0.0.0.0",
+        port=int(PORT),
+        url_path=TOKEN
+    )
+    updater.bot.setWebhook(
+        "https://python-stock-scraper-bot.herokuapp.com/" + TOKEN)
     # Block until the user presses Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
