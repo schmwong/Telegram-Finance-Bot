@@ -1,4 +1,4 @@
-# Telegram-Finance-Bot
+# Telegram-Stock-Scraper-Bot
 
 Written in Python, deployed on Heroku.
 
