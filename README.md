@@ -1,4 +1,4 @@
-# Telegram-Finance-Bot
+# Telegram-Stock-Scraper-Bot
 
 Written in Python, deployed on Heroku.
 
@@ -9,7 +9,7 @@ Scraper: https://gist.github.com/davidcjw/422300a1ddc360e3b892bc9866a32005#file-
 Bot: https://gist.github.com/davidcjw/208b23f78b3da7ace7c1790a0b4b0930#file-telegram_bot_app-py
 
 ## Step 2: Create telegram bot with BotFather
-https://t.me/BotFather
+https://t.me/BotFather \
 ![Screen Shot 2021-07-15 at 10 01 19 AM](https://user-images.githubusercontent.com/79643071/125716371-6d592e9b-3622-4307-b03e-12dfbf7edda5.png)
 
 ## Step 3: Export bot token to access API
