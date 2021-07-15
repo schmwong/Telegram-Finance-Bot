@@ -34,6 +34,6 @@ get_px_change
 - GitHub repo secrets: bot token & Heroku email
 
 ## Step 7: Create project and add bot token on Heroku
-
+Install Heroku CLI if not yet done so.
 - heroku create <project_name>
 - heroku config:set TELEGRAM_BOT_TOKEN=<YOUR_BOT_TOKEN_HERE>
